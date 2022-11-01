@@ -27,9 +27,9 @@ alias xip='echo; curl -s ipinfo.io; echo;'
 weather() {
     if [ -z "$1" ]; then
             echo
-            curl -s wttr.in/?1mqF
+            curl -s wttr.in/?2mqF
     else
             echo
-            curl -s wttr.in/"$1"?1mqF
+            curl -s wttr.in/"$1"?2mqF
     fi
 }
