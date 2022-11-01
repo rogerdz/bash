@@ -20,16 +20,24 @@ PS_TIME="\[\033[\$((COLUMNS-10))G\] $RED[\t]"
 PS1="\${PS_FILL}\[\033[0G\]${PS_INFO} ${PS_GIT}${PS_TIME}\n${WHITE}\$${RESET} "
 
 # Quickly find out external IP address for your device by typing 'xip'
-alias xip='echo; curl -s ipinfo.io; echo;'
+xip() {
+    echo
+    if [ -z "$1" ]; then
+        curl -s ipinfo.io
+    else
+        curl -s ipinfo.io/"$1"
+    fi
+    echo
+}
 
 # Quickly check weather for your city right inside the terminal by typing 'weather'
 # Remove 'm' from the url to use Fahrenheit instead of Celsius
 weather() {
     if [ -z "$1" ]; then
-            echo
-            curl -s wttr.in/?2mqF
+        echo
+        curl -s wttr.in/?2mqF
     else
-            echo
-            curl -s wttr.in/"$1"?2mqF
+        echo
+        curl -s wttr.in/"$1"?2mqF
     fi
 }
