@@ -18,3 +18,18 @@ PS_INFO="$CYAN\u@\h$RESET:$GREEN\w"
 PS_GIT="$YELLOW\$PS_BRANCH"
 PS_TIME="\[\033[\$((COLUMNS-10))G\] $RED[\t]"
 PS1="\${PS_FILL}\[\033[0G\]${PS_INFO} ${PS_GIT}${PS_TIME}\n${WHITE}\$${RESET} "
+
+# Quickly find out external IP address for your device by typing 'xip'
+alias xip='echo; curl -s ipinfo.io; echo;'
+
+# Quickly check weather for your city right inside the terminal by typing 'weather'
+# Remove 'm' from the url to use Fahrenheit instead of Celsius
+weather() {
+    if [ -z "$1" ]; then
+            echo
+            curl -s wttr.in/?0mq
+    else
+            echo
+            curl -s wttr.in/"$1"?0mq
+    fi
+}
