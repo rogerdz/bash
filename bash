@@ -17,7 +17,9 @@ PROMPT_COMMAND=parse_git_branch
 PS_INFO="$CYAN\u@\h$RESET:$GREEN\w"
 PS_GIT="$YELLOW\$PS_BRANCH"
 PS_TIME="\[\033[\$((COLUMNS-10))G\] $RED[\t]"
-PS1="\n\${PS_FILL}\[\033[0G\]${PS_INFO} ${PS_GIT}${PS_TIME}\n${WHITE}\$${RESET} "
+
+BASH_STATUS='`if [ $? = 0 ]; then echo "\[\033[01;32m\]\$"; else echo "\[\033[01;31m\]\$"; fi`'
+PS1="\n\${PS_FILL}\[\033[0G\]${PS_INFO} ${PS_GIT}${PS_TIME}\n${WHITE}${BASH_STATUS}${RESET} "
 
 # Quickly find out external IP address for your device by typing 'xip'
 xip() {
