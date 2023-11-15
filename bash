@@ -10,8 +10,7 @@ PS_LINE=`printf -- '- %.0s' {1..200}`
 function parse_git_branch {
   PS_BRANCH=''
   PS_FILL=${PS_LINE:0:$COLUMNS}
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  PS_BRANCH="(${ref#refs/heads/}) "
+  PS_BRANCH="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/') "
 }
 PROMPT_COMMAND=parse_git_branch
 PS_INFO="$CYAN\u@\h$RESET:$GREEN\w"
